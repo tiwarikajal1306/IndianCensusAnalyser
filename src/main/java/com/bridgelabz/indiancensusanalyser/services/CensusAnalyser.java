@@ -26,7 +26,7 @@ public class CensusAnalyser {
 
             return numOfEntries;
         }catch(RuntimeException e){
-                throw new CensusAnalyserException("Wrong delimiter", CensusAnalyserException.ExceptionType.WRONG_DELIMITER_OR_HEADER);
+                throw new CensusAnalyserException("Wrong delimiter OR Header", CensusAnalyserException.ExceptionType.WRONG_DELIMITER_OR_HEADER);
 
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
