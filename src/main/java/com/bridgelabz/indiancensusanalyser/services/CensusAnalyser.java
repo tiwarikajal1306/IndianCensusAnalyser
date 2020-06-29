@@ -1,11 +1,8 @@
 package com.bridgelabz.indiancensusanalyser.services;
-
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -20,21 +17,25 @@ public class CensusAnalyser {
             csvToBeanBuilder.withType(IndiaCensusCSV.class);
             csvToBeanBuilder.withIgnoreLeadingWhiteSpace(true);
             CsvToBean<IndiaCensusCSV> csvToBean = csvToBeanBuilder.build();
-            Iterator<IndiaCensusCSV> censusCSVIterator = csvToBean.iterator();;
-            int namOfEateries = 0;
+            Iterator<IndiaCensusCSV> censusCSVIterator = csvToBean.iterator();
+            int numOfEntries = 0;
             while (censusCSVIterator.hasNext()) {
-                namOfEateries++;
+                numOfEntries++;
                 IndiaCensusCSV censusData = censusCSVIterator.next();
             }
-            return namOfEateries;
+
+            return numOfEntries;
+        }catch(RuntimeException e){
+                throw new CensusAnalyserException("Wrong delimiter", CensusAnalyserException.ExceptionType.WRONG_DELIMITER_OR_HEADER);
+
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         }
     }
-    public void wrongFileExtension(String path) throws CensusAnalyserException {
+    public void getFileExtension(String path) throws CensusAnalyserException {
         boolean extension=path.endsWith(".csv");
         if(!extension)
-          throw new CensusAnalyserException("Wrong Extension",CensusAnalyserException.ExceptionType.WRONG_FILE_TYPE);
+          throw new CensusAnalyserException("Wrong Extension",CensusAnalyserException.ExceptionType.NO_SUCH_TYPE);
     }
 }
