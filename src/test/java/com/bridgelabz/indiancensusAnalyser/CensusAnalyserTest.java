@@ -103,4 +103,15 @@ public class CensusAnalyserTest {
             System.out.println(e.getMessage());
         }
     }
+    //tc2.4
+    @Test
+    public void givenIndianStateCsvFile_WhenImproperDelimiter_ShouldThrowException() {
+        try {
+            stateanalyser = new StateAnalyser();
+            stateanalyser.loadIndiaStateData(WRONG_DELIMITER_STATE_CENSUS_DATA_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_DELIMITER_OR_HEADER,e.type);
+            System.out.println(e.getMessage());
+        }
+    }
 }
