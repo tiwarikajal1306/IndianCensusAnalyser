@@ -1,8 +1,13 @@
 package com.bridgelabz.indiancensusanalyser.exception;
 
 public class CensusAnalyserException extends Exception {
-   public enum ExceptionType {
-        CENSUS_FILE_PROBLEM,NO_SUCH_TYPE,UNABLE_TO_PARSE
+    public CensusAnalyserException(String message, String name) {
+        super(message);
+        this.type = ExceptionType.valueOf(name);
+    }
+
+    public enum ExceptionType {
+        CENSUS_FILE_PROBLEM,NO_SUCH_TYPE
     }
     public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type) {

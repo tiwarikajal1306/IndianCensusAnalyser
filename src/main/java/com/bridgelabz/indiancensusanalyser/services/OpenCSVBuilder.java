@@ -16,7 +16,7 @@ public class OpenCSVBuilder<E> implements ICSVBuilder {
      * @return
      * @throws CensusAnalyserException
      */
-    public Iterator<E> getCSVFileIterator(Reader reader, Class csvClass) throws CensusAnalyserException {
+    public Iterator<E> getCSVFileIterator(Reader reader, Class csvClass) throws CSVBuilderException {
         try{
             CsvToBeanBuilder<E> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
             csvToBeanBuilder.withType(csvClass);
@@ -25,12 +25,12 @@ public class OpenCSVBuilder<E> implements ICSVBuilder {
             return csvToBean.iterator();
         }
         catch (IllegalStateException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE);
+            throw new CSVBuilderException(e.getMessage(),
+                    CSVBuilderException.ExceptionType.UNABLE_TO_PARSE);
         }
         catch (RuntimeException e){
-            throw new CensusAnalyserException("Improper Header OR Delimiter",
-                    CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
+            throw new CSVBuilderException("Improper Header OR Delimiter",
+                   CSVBuilderException.ExceptionType.CENSUS_FILE_PROBLEM);
         }
     }
 }

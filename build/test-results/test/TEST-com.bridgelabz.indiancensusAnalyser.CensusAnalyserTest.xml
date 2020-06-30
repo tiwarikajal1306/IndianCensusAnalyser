@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-06-30T20:47:21" hostname="KAJAL-LAPTOP" time="0.366">
+<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-06-30T23:37:10" hostname="KAJAL-LAPTOP" time="0.308">
   <properties/>
-  <testcase name="givenIndianStateCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.083"/>
-  <testcase name="givenIndiaStateData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.003"/>
-  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.208"/>
-  <testcase name="givenIndiaStateData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.0"/>
-  <testcase name="givenIndianCensusCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.011"/>
+  <testcase name="givenIndianStateCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.068"/>
+  <testcase name="givenIndiaStateData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
+  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.178"/>
+  <testcase name="givenIndiaStateData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.004"/>
+  <testcase name="givenIndianCensusCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.009"/>
   <testcase name="givenIndiaCensusData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
-  <testcase name="givenIndianCensusCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
-  <testcase name="givenIndiaCensusData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.0"/>
-  <testcase name="givenIndianStateCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
-  <testcase name="givenIndiaStateCodeCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.052"/>
+  <testcase name="givenIndianCensusCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.002"/>
+  <testcase name="givenIndiaCensusData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
+  <testcase name="givenIndianStateCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.002"/>
+  <testcase name="givenIndiaStateCodeCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.04"/>
   <system-out><![CDATA[Improper Header OR Delimiter
 .\src\main\resources\IndiaStateCensusData.csv
 Wrong Extension
@@ -21,8 +21,7 @@ Improper Header OR Delimiter
 Improper Header OR Delimiter
 ]]></system-out>
   <system-err><![CDATA[com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException: Improper Header OR Delimiter
-	at com.bridgelabz.indiancensusanalyser.services.OpenCSVBuilder.getCSVFileIterator(OpenCSVBuilder.java:32)
-	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.loadIndiaStateCode(CensusAnalyser.java:27)
+	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.loadIndiaStateCode(CensusAnalyser.java:35)
 	at com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest.givenIndiaStateCodeCSVFileReturnsCorrectRecords(CensusAnalyserTest.java:77)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
