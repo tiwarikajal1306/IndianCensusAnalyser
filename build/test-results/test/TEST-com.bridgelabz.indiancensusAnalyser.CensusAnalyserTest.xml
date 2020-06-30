@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-06-30T17:08:37" hostname="KAJAL-LAPTOP" time="0.544">
+<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-06-30T18:11:05" hostname="KAJAL-LAPTOP" time="0.473">
   <properties/>
-  <testcase name="givenIndianStateCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.097"/>
+  <testcase name="givenIndianStateCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.089"/>
   <testcase name="givenIndiaStateData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.002"/>
-  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.348"/>
-  <testcase name="givenIndiaStateData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.006"/>
-  <testcase name="givenIndianCensusCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.014"/>
-  <testcase name="givenIndiaCensusData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.0"/>
+  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.295"/>
+  <testcase name="givenIndiaStateData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.003"/>
+  <testcase name="givenIndianCensusCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.011"/>
+  <testcase name="givenIndiaCensusData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
   <testcase name="givenIndianCensusCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.002"/>
   <testcase name="givenIndiaCensusData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
-  <testcase name="givenIndianStateCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.002"/>
-  <testcase name="givenIndiaStateCodeCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.047"/>
+  <testcase name="givenIndianStateCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.003"/>
+  <testcase name="givenIndiaStateCodeCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.061"/>
   <system-out><![CDATA[Improper Header OR Delimiter
 .\src\main\resources\IndiaStateCensusData.csv
 Wrong Extension
@@ -21,8 +21,8 @@ Improper Header OR Delimiter
 Improper Header OR Delimiter
 ]]></system-out>
   <system-err><![CDATA[com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException: Improper Header OR Delimiter
-	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.getCSVFileIterator(CensusAnalyser.java:58)
-	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.loadIndiaStateCode(CensusAnalyser.java:32)
+	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.getCSVFileIterator(CensusAnalyser.java:56)
+	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.loadIndiaStateCode(CensusAnalyser.java:29)
 	at com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest.givenIndiaStateCodeCSVFileReturnsCorrectRecords(CensusAnalyserTest.java:77)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

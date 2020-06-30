@@ -16,31 +16,29 @@ public class CensusAnalyser {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             Iterator<IndiaCensusCSV> censusCSVIterator = this.getCSVFileIterator(reader, IndiaCensusCSV.class);
-            Iterable<IndiaCensusCSV> csvIterable = () -> censusCSVIterator;
-            int numOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
-            return numOfEntries;
+            return this.getCount(censusCSVIterator);
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         }
     }
-
 
     public int loadIndiaStateCode(String csvFilePath) throws CensusAnalyserException{
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             Iterator<IndiaStateCSV> stateCSVIterator = this.getCSVFileIterator(reader, IndiaStateCSV.class);
-            Iterable<IndiaStateCSV> csvIterable = () -> stateCSVIterator;
-            int numOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
-            return numOfEntries;
+            return getCount(stateCSVIterator);
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         }
     }
 
-
-
+    private <E>int getCount(Iterator<E> integer){
+        Iterable<E> csvIterable = () -> integer;
+        int numOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
+        return numOfEntries;
+    }
 
     private <E> Iterator<E> getCSVFileIterator(Reader reader, Class csvClass) throws CensusAnalyserException {
         try{
@@ -58,9 +56,7 @@ public class CensusAnalyser {
             throw new CensusAnalyserException("Improper Header OR Delimiter",
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         }
-
     }
-
 
     public void getFileExtension(String path) throws CensusAnalyserException {
         boolean extension=path.endsWith(".csv");
