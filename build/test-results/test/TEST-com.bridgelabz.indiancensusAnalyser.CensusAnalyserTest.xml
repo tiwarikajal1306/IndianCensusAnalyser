@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-29T23:02:49" hostname="KAJAL-LAPTOP" time="0.013">
+<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-30T00:41:15" hostname="KAJAL-LAPTOP" time="0.385">
   <properties/>
-  <testcase name="givenIndiaCensusData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.013"/>
-  <system-out><![CDATA[.\src\main\resources\IndiaStateCensusData.csvNo such path exist
-]]></system-out>
+  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.385"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
