@@ -75,7 +75,7 @@ public class CensusAnalyserTest {
     @Test
     public void givenIndiaStateCodeCSVFileReturnsCorrectRecords() {
         try {
-            stateanalyser = new StateAnalyser();
+           stateanalyser = new StateAnalyser();
             int numOfRecords = stateanalyser.loadIndiaStateData(INDIA_STATE_CODE_CSV_FILE_PATH);
             Assert.assertEquals(37,numOfRecords);
         } catch (CensusAnalyserException e) {
@@ -109,6 +109,17 @@ public class CensusAnalyserTest {
         try {
             stateanalyser = new StateAnalyser();
             stateanalyser.loadIndiaStateData(WRONG_DELIMITER_STATE_CENSUS_DATA_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_DELIMITER_OR_HEADER,e.type);
+            System.out.println(e.getMessage());
+        }
+    }
+    //tc2.5
+    @Test
+    public void givenIndianStateCsvFile_WhenImproperHeader_ShouldThrowException() {
+        try {
+            stateanalyser = new StateAnalyser();
+            stateanalyser.loadIndiaStateData(WRONG_HEADER_STATE_CENSUS_DATA_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG_DELIMITER_OR_HEADER,e.type);
             System.out.println(e.getMessage());
