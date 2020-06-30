@@ -1,18 +1,18 @@
 package com.bridgelabz.indiancensusanalyser.model;
 
-import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 
 public class IndiaStateCSV {
-    @CsvBindByName(column = "SrNo", required = true)
+    @CsvBindByPosition(position = 0, required = true)
     public int SrNo;
 
-    @CsvBindByName(column = "State Name", required = true)
+    @CsvBindByPosition(position = 1, required = true)
     public String StateName;
 
-    @CsvBindByName(column = "TIN", required = true)
+    @CsvBindByPosition(position = 2, required = true)
     public int TIN;
 
-    @CsvBindByName(column = "StateCode", required = true)
+    @CsvBindByPosition(position = 3, required = true)
     public int StateCode;
 
     @Override
