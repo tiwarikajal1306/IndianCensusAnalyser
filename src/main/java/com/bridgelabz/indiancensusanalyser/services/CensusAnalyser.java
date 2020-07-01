@@ -2,6 +2,9 @@ package com.bridgelabz.indiancensusanalyser.services;
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
+import com.opencsv.CSVBuilderException;
+import com.opencsv.CSVBuilderFactory;
+import com.opencsv.ICSVBuilder;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -46,11 +49,5 @@ public class CensusAnalyser {
         Iterable<E> csvIterable = () -> integer;
         int numOfEntries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
         return numOfEntries;
-    }
-
-    public void getFileExtension(String path) throws CensusAnalyserException {
-        boolean extension=path.endsWith(".csv");
-        if(!extension)
-          throw new CensusAnalyserException("Wrong Extension",CensusAnalyserException.ExceptionType.NO_SUCH_TYPE);
     }
 }

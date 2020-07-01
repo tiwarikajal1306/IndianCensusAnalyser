@@ -41,9 +41,9 @@ public class CensusAnalyserTest {
     public void givenIndiaCensusData_WithWrongFileState_ShouldThrowException() {
         try {
             censusAnalyser = new CensusAnalyser();
-            censusAnalyser.getFileExtension(WRONG_INDIAN_STATE_CENSUS_DATA_PATH);
+            censusAnalyser.loadIndiaCensusData(WRONG_INDIAN_STATE_CENSUS_DATA_PATH);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.NO_SUCH_TYPE,e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
             System.out.println(e.getMessage());
         }
     }
@@ -96,9 +96,9 @@ public class CensusAnalyserTest {
     public void givenIndiaStateData_WithWrongFileState_ShouldThrowException() {
         try {
             censusAnalyser = new CensusAnalyser();
-            censusAnalyser.getFileExtension(WRONG_INDIAN_STATE_DATA_PATH);
+            censusAnalyser.loadIndiaStateCode(WRONG_INDIAN_STATE_DATA_PATH);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.NO_SUCH_TYPE,e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
             System.out.println(e.getMessage());
         }
     }
