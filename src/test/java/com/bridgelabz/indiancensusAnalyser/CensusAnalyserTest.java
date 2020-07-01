@@ -128,15 +128,17 @@ public class CensusAnalyserTest {
     }
     //uc3
     @Test
-    public void giveIndianCensusData_WhenSortOnState_ShouldReturnSortedResult(){
+    public void giveIndianCensusData_WhenSortOnState_ShouldReturnSortedResult() {
         try {
             censusAnalyser = new CensusAnalyser();
-            String sortCensusData = censusAnalyser.getStateWiseSortedCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortCensusData = censusAnalyser.getStateWiseSortedCensusData();
             IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
-            Assert.assertEquals("Andhra Pradesh", indiaCensusCSV[0].state );
+            Assert.assertEquals("Andhra Pradesh", indiaCensusCSV[0].state);
         } catch (CensusAnalyserException e) {
-            e.printStackTrace();
-        }
 
+        }
     }
+    //uc5
+    
 }
