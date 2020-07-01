@@ -16,4 +16,5 @@ dependencies {
     compile "com.opencsv:opencsv:4.0"
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "org.apache.commons:commons-csv:1.5"
+    compile 'com.google.code.gson:gson:2.2.+'
 }
