@@ -153,5 +153,17 @@ public class CensusAnalyserTest {
 
         }
     }
-    
+    //uc5
+    @Test
+    public void giveIndianCensusData_WhenSortOnPopulation_ShouldReturnSortedResult() {
+        try {
+            censusAnalyser = new CensusAnalyser();
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String sortCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
+            IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
+            Assert.assertEquals(199812341, indiaCensusCSV[indiaCensusCSV.length-1].population);
+        } catch (CensusAnalyserException e) {
+
+        }
+    }
 }

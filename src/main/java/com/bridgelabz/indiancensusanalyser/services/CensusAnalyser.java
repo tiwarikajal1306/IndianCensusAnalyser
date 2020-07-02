@@ -115,5 +115,14 @@ public class CensusAnalyser {
             }
         }
     }
+    public String getPopulationWiseSortedCensusData() throws CensusAnalyserException {
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("empty file",CensusAnalyserException.ExceptionType.EMPTY_FILE);
+        }
+        Comparator<IndiaCensusCSV> censusComparator = Comparator.comparing(census -> census.population);
+        this.sort(censusComparator);
+        String sortedStateCensusJson = new Gson().toJson(censusCSVList);
+        return sortedStateCensusJson;
 
+    }
 }
