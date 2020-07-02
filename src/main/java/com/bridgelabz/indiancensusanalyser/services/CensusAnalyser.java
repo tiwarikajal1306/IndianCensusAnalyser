@@ -133,26 +133,35 @@ public class CensusAnalyser {
         }
         return sortedStateCensusJson;
     }
-    //sort the density
+    //sort by descending the density
     public String getDensityWiseSortedCensusData() throws CensusAnalyserException {
         if (censusCSVList == null || censusCSVList.size() == 0) {
             throw new CensusAnalyserException("empty file",CensusAnalyserException.ExceptionType.EMPTY_FILE);
         }
         Comparator<IndiaCensusCSV> censusComparator = Comparator.comparing(census -> census.densityPerSqKm);
-        this.sortDensity(censusComparator);
+        this.sortDescending(censusComparator);
         String sortedStateCensusJson = new Gson().toJson(censusCSVList);
         return sortedStateCensusJson;
     }
-    private void sortDensity(Comparator<IndiaCensusCSV> censusComparator) {
+    private void sortDescending(Comparator<IndiaCensusCSV> censusComparator) {
         for (int i = 0; i < censusCSVList.size() - 1; i++) {
             for (int j = 0; j < censusCSVList.size() - i - 1; j++) {
                 IndiaCensusCSV census1 = censusCSVList.get(j);
                 IndiaCensusCSV census2 = censusCSVList.get(j + 1);
-                if (censusComparator.compare(census1, census2) > 0) {
+                if (censusComparator.compare(census1, census2) < 0) {
                     censusCSVList.set(j, census2);
                     censusCSVList.set(j + 1, census1);
                 }
             }
         }
+    }
+    public String getAreaWiseSortedCensusData() throws CensusAnalyserException {
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("empty file",CensusAnalyserException.ExceptionType.EMPTY_FILE);
+        }
+        Comparator<IndiaCensusCSV> censusComparator = Comparator.comparing(census -> census.areaInSqKm);
+        this.sortDescending(censusComparator);
+        String sortedStateCensusJson = new Gson().toJson(censusCSVList);
+        return sortedStateCensusJson;
     }
 }

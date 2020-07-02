@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-02T00:56:46" hostname="KAJAL-LAPTOP" time="0.367">
+<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2020-07-02T01:12:36" hostname="KAJAL-LAPTOP" time="0.839">
   <properties/>
-  <testcase name="giveIndianCensusData_WhenSortOnDensity_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.367"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="givenIndianStateCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.172"/>
+  <testcase name="givenIndiaStateData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.075"/>
+  <testcase name="giveIndianCensusData_WhenSortOnArea_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.315"/>
+  <testcase name="givenIndianCensusCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.068"/>
+  <testcase name="giveIndianCensusData_WhenSortOnState_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.067"/>
+  <testcase name="givenIndiaStateData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
+  <testcase name="givenIndianCensusCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.002"/>
+  <testcase name="givenIndiaCensusData_WithWrongFileState_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.0"/>
+  <testcase name="giveIndiaStateCode_WhenSortOnStateCode_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.043"/>
+  <testcase name="givenIndianCensusCsvFile_WhenImproperDelimiter_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
+  <testcase name="givenIndiaCensusData_WithWrongFilePath_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.0"/>
+  <testcase name="givenIndianStateCsvFile_WhenImproperHeader_ShouldThrowException" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.001"/>
+  <testcase name="givenIndiaStateCodeCSVFileReturnsCorrectRecords" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.038"/>
+  <testcase name="giveIndianCensusData_WhenSortOnPopulation_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.032"/>
+  <testcase name="giveIndianCensusData_WhenSortOnDensity_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.016"/>
+  <system-out><![CDATA[Error capturing CSV header!
+.\src\main\resources\IndiaStateCensusData.csv
+.\src\test\resources\IndiaStateCode.sh
+Error capturing CSV header!
+.\src\test\resources\IndiaStateCensusData.sh
+Error capturing CSV header!
+.\src\main\resources\IndiaStateCensusData.csv
+Error capturing CSV header!
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
