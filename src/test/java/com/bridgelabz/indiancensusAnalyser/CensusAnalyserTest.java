@@ -163,7 +163,6 @@ public class CensusAnalyserTest {
             IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
             Assert.assertEquals(199812341, indiaCensusCSV[indiaCensusCSV.length-1].population);
         } catch (CensusAnalyserException e) {
-
         }
     }
     //uc6
@@ -176,7 +175,6 @@ public class CensusAnalyserTest {
             IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
             Assert.assertEquals(1102, indiaCensusCSV[0].densityPerSqKm);
         } catch (CensusAnalyserException e) {
-
         }
     }
     //uc7
