@@ -13,10 +13,10 @@ public class UsCensusCSV {
     public int usPopulation;
 
     @CsvBindByName(column = "Housing units", required = true)
-    public String housingUnits;
+    public int housingUnits;
 
     @CsvBindByName(column = "Total area", required = true)
-    public String totalArea;
+    public double totalArea;
 
     @CsvBindByName(column = "Water area", required = true)
     public String waterArea;
