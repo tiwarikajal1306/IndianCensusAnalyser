@@ -3,6 +3,7 @@ package com.bridgelabz.indiancensusAnalyser;
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
+import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
 import com.bridgelabz.indiancensusanalyser.services.CensusAnalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
@@ -16,6 +17,7 @@ public class CensusAnalyserTest {
     private static final String WRONG_HEADER_STATE_CENSUS_DATA_PATH = "./src/test/resources/WrongDelimiter.csv";
     private static final String INDIA_STATE_CODE_CSV_FILE_PATH = "./src/test/resources/IndiaStateCode.csv";
     private static final String WRONG_INDIAN_STATE_DATA_PATH = "./src/test/resources/IndiaStateCode.sh";
+    private static final String Us_CENSUS_CSV_FILE_PATH = "./src/test/resources/US_STATE_CENSUS.csv";
             CensusAnalyser censusAnalyser;
     //tc1.1
     @Test
@@ -186,6 +188,31 @@ public class CensusAnalyserTest {
             String sortCensusData = censusAnalyser.getAreaWiseSortedCensusData();
             IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
             Assert.assertEquals(342239, indiaCensusCSV[0].areaInSqKm);
+        } catch (CensusAnalyserException e) {
+
+        }
+    }
+
+    //us most and least populous state
+    @Test
+    public void giveUsCensusData_WhenSortOnPopulation_ShouldReturnSortedResult() {
+        try {
+            censusAnalyser = new CensusAnalyser();
+            censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
+            String sortCensusData = censusAnalyser.getPopulationWiseSortedUsCensusData();
+            UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
+            Assert.assertEquals(37253956, usCensusCSV[usCensusCSV.length-1].usPopulation);
+            Assert.assertEquals(601723, usCensusCSV[0].usPopulation);
+        } catch (CensusAnalyserException e) {
+        }
+    }
+    //check the records of usCsv file
+    @Test
+    public void givenUsCensusCSVFile_ReturnsCorrectRecords() {
+        try {
+            censusAnalyser = new CensusAnalyser();
+            int numOfRecords = censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
+            Assert.assertEquals(45, numOfRecords);
         } catch (CensusAnalyserException e) {
 
         }

@@ -128,6 +128,23 @@ public class CensusAnalyser {
         }
         return sortedPopulationCensusJson;
     }
+//population for us
+    public String getPopulationWiseSortedUsCensusData() throws CensusAnalyserException {
+        if (censusHashMap == null || censusHashMap.size() == 0)
+            throw new CensusAnalyserException("NO_CENSUS_DATA", CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
+        Comparator<UsCensusCSV> censusComparator = Comparator.comparing(census -> census.usPopulation);
+        this.asscendingSort(censusComparator, censusHashMap);
+        censusRecords = censusHashMap.values();
+        String sortedPopulationCensusJson = new Gson().toJson(censusRecords);
+        String fileName = "./src/test/resources/UsStateCensusjson.json";
+        try (Writer writer = new FileWriter(fileName)) {
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(censusHashMap, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sortedPopulationCensusJson;
+    }
 
     //sort by descending the density
     public String getDensityWiseSortedCensusData() throws CensusAnalyserException {
