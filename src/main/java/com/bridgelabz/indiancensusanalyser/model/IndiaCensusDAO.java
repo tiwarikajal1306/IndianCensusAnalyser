@@ -23,4 +23,7 @@ public class IndiaCensusDAO {
         stateName = indiaStateCSV.stateName;
         tin = indiaStateCSV.tin;
     }
+    public IndiaCensusDAO(){
+
+    }
 }
