@@ -3,7 +3,6 @@ package com.bridgelabz.indiancensusAnalyser;
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
-import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
 import com.bridgelabz.indiancensusanalyser.services.CensusAnalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
@@ -30,11 +29,12 @@ public class CensusAnalyserTest {
             e.printStackTrace();
         }
     }
-//tc1.2
+
+    //tc1.2
     @Test
     public void givenIndiaCensusData_WithWrongFilePath_ShouldThrowException() {
         try {
-             censusAnalyser = new CensusAnalyser();
+            censusAnalyser = new CensusAnalyser();
             censusAnalyser.loadIndiaCensusData(WRONG_CSV_FILE_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
@@ -74,6 +74,7 @@ public class CensusAnalyserTest {
             System.out.println(e.getMessage());
         }
     }
+
     //tc2.1
     @Test
     public void givenIndiaStateCodeCSVFileReturnsCorrectRecords() {
@@ -138,8 +139,9 @@ public class CensusAnalyserTest {
             String sortCensusData = censusAnalyser.getStateWiseSortedCensusData();
             IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
             Assert.assertEquals("Andhra Pradesh", indiaCensusCSV[0].state);
+            Assert.assertEquals("West Bengal", indiaCensusCSV[28].state);
         } catch (CensusAnalyserException e) {
-
+            e.printStackTrace();
         }
     }
     //uc4
@@ -151,6 +153,7 @@ public class CensusAnalyserTest {
             String sortStateData = censusAnalyser.getCodeWiseSortedStateCodeData();
             IndiaStateCSV[] indiaStateCSV = new Gson().fromJson(sortStateData, IndiaStateCSV[].class);
             Assert.assertEquals("AD", indiaStateCSV[0].stateCode);
+            Assert.assertEquals("WB", indiaStateCSV[36].stateCode);
         } catch (CensusAnalyserException e) {
 
         }
@@ -163,11 +166,11 @@ public class CensusAnalyserTest {
             censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
             String sortCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
             IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
-            Assert.assertEquals(199812341, indiaCensusCSV[indiaCensusCSV.length-1].population);
+            Assert.assertEquals(199812341, indiaCensusCSV[0].population);
         } catch (CensusAnalyserException e) {
         }
     }
-    //uc6
+   // uc6
     @Test
     public void giveIndianCensusData_WhenSortOnDensity_ShouldReturnSortedResult() {
         try {
@@ -192,39 +195,39 @@ public class CensusAnalyserTest {
 
         }
     }
-
-    //us most and least populous state
-    @Test
-    public void giveUsCensusData_WhenSortOnPopulation_ShouldReturnSortedResult() {
-        try {
-            censusAnalyser = new CensusAnalyser();
-            censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
-            String sortCensusData = censusAnalyser.getPopulationWiseSortedUsCensusData();
-            UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-            Assert.assertEquals(37253956, usCensusCSV[usCensusCSV.length-1].usPopulation);
-            Assert.assertEquals(601723, usCensusCSV[0].usPopulation);
-        } catch (CensusAnalyserException e) {
-        }
-    }
+//
+//    //us most and least populous state
+//    @Test
+//    public void giveUsCensusData_WhenSortOnPopulation_ShouldReturnSortedResult() {
+//        try {
+//            censusAnalyser = new CensusAnalyser();
+//            censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
+//            String sortCensusData = censusAnalyser.getPopulationWiseSortedUsCensusData();
+//            UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
+//            Assert.assertEquals(37253956, usCensusCSV[usCensusCSV.length-1].usPopulation);
+//            Assert.assertEquals(601723, usCensusCSV[0].usPopulation);
+//        } catch (CensusAnalyserException e) {
+//        }
+//    }
     //check the records of usCsv file
-    @Test
-    public void givenUsCensusCSVFile_ReturnsCorrectRecords() {
-        try {
-            censusAnalyser = new CensusAnalyser();
-            int numOfRecords = censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
-            Assert.assertEquals(45, numOfRecords);
-        } catch (CensusAnalyserException e) {
-        }
-    }
-    @Test
-    public void giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult() {
-        try {
-            censusAnalyser = new CensusAnalyser();
-            censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
-            String sortCensusData = censusAnalyser.getAreaWiseSortedUsCensusData();
-            UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-            Assert.assertEquals("94326.27", usCensusCSV[0].totalArea);
-        } catch (CensusAnalyserException e) {
-        }
-    }
+//    @Test
+//    public void givenUsCensusCSVFile_ReturnsCorrectRecords() {
+//        try {
+//            censusAnalyser = new CensusAnalyser();
+//            int numOfRecords = censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
+//            Assert.assertEquals(45, numOfRecords);
+//        } catch (CensusAnalyserException e) {
+//        }
+//    }
+//    @Test
+//    public void giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult() {
+//        try {
+//            censusAnalyser = new CensusAnalyser();
+//            censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
+//            String sortCensusData = censusAnalyser.getAreaWiseSortedUsCensusData();
+//            UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
+//            Assert.assertEquals("94326.27", usCensusCSV[0].totalArea);
+//        } catch (CensusAnalyserException e) {
+//        }
+//    }
 }

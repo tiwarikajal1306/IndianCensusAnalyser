@@ -19,7 +19,7 @@ public class UsCensusCSV {
     public double totalArea;
 
     @CsvBindByName(column = "Water area", required = true)
-    public String waterArea;
+    public double waterArea;
 
     @Override
     public String toString() {
