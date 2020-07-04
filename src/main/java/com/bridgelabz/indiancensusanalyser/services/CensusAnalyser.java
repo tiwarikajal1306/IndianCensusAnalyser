@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -68,6 +69,28 @@ public class CensusAnalyser {
         }
         return 0;
     }
+
+    public int loadUSCensusData(String usCensusCsvFilePath) throws CensusAnalyserException {
+        try (Reader reader = Files.newBufferedReader(Paths.get(usCensusCsvFilePath))) {
+            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
+            Iterator<UsCensusCSV> stateCensusIterator = csvBuilder.getCSVFileIterator(reader, UsCensusCSV.class);
+            Iterable<UsCensusCSV> stateCensuses = () -> stateCensusIterator;
+            StreamSupport.stream(stateCensuses.spliterator(), false)
+                    .forEach(csvStateCensus -> censusMap.put(csvStateCensus.usState, new CensusDAO(csvStateCensus)));
+            censusList = censusMap.values().stream().collect(Collectors.toList());
+           return censusMap.size();
+        } catch (RuntimeException e) {
+            throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
+        } catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(), e.type.name());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+
 
     //Method for sorting
     private void sortCSVData(Comparator<CensusDAO> csvComparator) {

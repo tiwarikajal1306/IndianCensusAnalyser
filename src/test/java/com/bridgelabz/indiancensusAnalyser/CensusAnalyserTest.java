@@ -195,7 +195,6 @@ public class CensusAnalyserTest {
 
         }
     }
-//
 //    //us most and least populous state
 //    @Test
 //    public void giveUsCensusData_WhenSortOnPopulation_ShouldReturnSortedResult() {
@@ -210,15 +209,15 @@ public class CensusAnalyserTest {
 //        }
 //    }
     //check the records of usCsv file
-//    @Test
-//    public void givenUsCensusCSVFile_ReturnsCorrectRecords() {
-//        try {
-//            censusAnalyser = new CensusAnalyser();
-//            int numOfRecords = censusAnalyser.loadUsCensusData(Us_CENSUS_CSV_FILE_PATH);
-//            Assert.assertEquals(45, numOfRecords);
-//        } catch (CensusAnalyserException e) {
-//        }
-//    }
+    @Test
+    public void givenUsCensusCSVFile_ReturnsCorrectRecords() {
+        try {
+            censusAnalyser = new CensusAnalyser();
+            int numOfRecords = censusAnalyser.loadUSCensusData(Us_CENSUS_CSV_FILE_PATH);
+            Assert.assertEquals(45, numOfRecords);
+        } catch (CensusAnalyserException e) {
+        }
+    }
 //    @Test
 //    public void giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult() {
 //        try {
