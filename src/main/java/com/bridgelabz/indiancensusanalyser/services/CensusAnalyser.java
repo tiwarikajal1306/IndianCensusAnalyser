@@ -33,11 +33,10 @@ public class CensusAnalyser {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaCensusCSV> indiaCensusIterator = csvBuilder.getCSVFileIterator(reader, IndiaCensusCSV.class);
-            while (indiaCensusIterator.hasNext()) {
-                CensusDAO censusDAO = new CensusDAO(indiaCensusIterator.next());
-                this.censusMap.put(censusDAO.state, censusDAO);
-                censusList = censusMap.values().stream().collect(Collectors.toList());
-            }
+            Iterable<IndiaCensusCSV> stateCensuses = () -> indiaCensusIterator;
+            StreamSupport.stream(stateCensuses.spliterator(), false)
+                    .forEach(csvStateCensus -> censusMap.put(csvStateCensus.state, new CensusDAO(csvStateCensus)));
+            censusList = censusMap.values().stream().collect(Collectors.toList());
             return censusMap.size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
@@ -54,11 +53,10 @@ public class CensusAnalyser {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaStateCSV> indiaCensusCodeIterator = csvBuilder.getCSVFileIterator(reader, IndiaStateCSV.class);
-            while (indiaCensusCodeIterator.hasNext()) {
-                CensusDAO censusDAO = new CensusDAO(indiaCensusCodeIterator.next());
-                this.censusMap.put(censusDAO.stateCode, censusDAO);
-                censusList = censusMap.values().stream().collect(Collectors.toList());
-            }
+            Iterable<IndiaStateCSV> stateCensuses = () -> indiaCensusCodeIterator;
+            StreamSupport.stream(stateCensuses.spliterator(), false)
+                    .forEach(csvStateCensus -> censusMap.put(csvStateCensus.stateCode, new CensusDAO(csvStateCensus)));
+            censusList = censusMap.values().stream().collect(Collectors.toList());
             return censusMap.size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
