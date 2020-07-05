@@ -16,7 +16,7 @@ public class UsCensusCSV {
     public int housingUnits;
 
     @CsvBindByName(column = "Total area", required = true)
-    public double totalArea;
+    public int totalArea;
 
     @CsvBindByName(column = "Water area", required = true)
     public double waterArea;

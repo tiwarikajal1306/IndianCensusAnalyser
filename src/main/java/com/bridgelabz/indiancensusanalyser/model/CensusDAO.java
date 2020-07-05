@@ -11,10 +11,10 @@ public class CensusDAO {
     public int tin;
     public String stateCode;
 
-    public double totalArea;
+    public int totalArea;
     public int usPopulation;
     public String usState;
-    public double housingUnits;
+    public int housingUnits;
     public double waterArea;
     public String stateId;
 

@@ -138,18 +138,16 @@ public class CensusAnalyser {
         return sortedStateCensusJson;
     }
 
-
+//
 
     public String stateCensusData(Comparator<CensusDAO> field) throws CensusAnalyserException {
         System.out.println(censusList);
         if (censusList == null || censusList.size() == 0) {
             throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
         }
-        //Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.state);
         this.sortCSVData(field);
         String sortedStateCensusJson = new Gson().toJson(censusList);
         return sortedStateCensusJson;
     }
-
 
 }

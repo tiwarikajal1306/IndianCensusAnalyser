@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-07-05T21:06:48" hostname="KAJAL-LAPTOP" time="0.46">
+<testsuite name="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-05T21:31:28" hostname="KAJAL-LAPTOP" time="2.419">
   <properties/>
-  <testcase name="giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="0.46">
-    <failure message="java.lang.AssertionError: expected: java.lang.String&lt;1723338.01&gt; but was: java.lang.Double&lt;1723338.01&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected: java.lang.String&lt;1723338.01&gt; but was: java.lang.Double&lt;1723338.01&gt;
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:118)
-	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest.giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult(CensusAnalyserTest.java:234)
+  <testcase name="giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult" classname="com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest" time="2.419"/>
+  <system-out><![CDATA[[]
+]]></system-out>
+  <system-err><![CDATA[java.lang.RuntimeException: com.opencsv.exceptions.CsvDataTypeMismatchException: Conversion of 135767.46 to int failed.
+	at com.opencsv.bean.concurrent.ProcessCsvLine.run(ProcessCsvLine.java:91)
+	at com.opencsv.bean.CsvToBean$CsvToBeanIterator.readLineWithPossibleError(CsvToBean.java:523)
+	at com.opencsv.bean.CsvToBean$CsvToBeanIterator.readSingleLine(CsvToBean.java:543)
+	at com.opencsv.bean.CsvToBean$CsvToBeanIterator.<init>(CsvToBean.java:500)
+	at com.opencsv.bean.CsvToBean.iterator(CsvToBean.java:488)
+	at com.opencsv.OpenCSVBuilder.getCSVFileIterator(OpenCSVBuilder.java:14)
+	at com.bridgelabz.indiancensusanalyser.services.CensusLoader.loadCensusData(CensusLoader.java:26)
+	at com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.loadCensusData(CensusAnalyser.java:40)
+	at com.bridgelabz.indiancensusAnalyser.CensusAnalyserTest.giveUsCensusData_WhenSortOnArea_ShouldReturnSortedResult(CensusAnalyserTest.java:231)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -55,9 +61,27 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-</failure>
-  </testcase>
-  <system-out><![CDATA[[com.bridgelabz.indiancensusanalyser.model.CensusDAO@2e2ca107, com.bridgelabz.indiancensusanalyser.model.CensusDAO@214e300a, com.bridgelabz.indiancensusanalyser.model.CensusDAO@3e4b48e9, com.bridgelabz.indiancensusanalyser.model.CensusDAO@b3bf1b, com.bridgelabz.indiancensusanalyser.model.CensusDAO@4bdc0293, com.bridgelabz.indiancensusanalyser.model.CensusDAO@1bc2a582, com.bridgelabz.indiancensusanalyser.model.CensusDAO@7faaba13, com.bridgelabz.indiancensusanalyser.model.CensusDAO@627c899a, com.bridgelabz.indiancensusanalyser.model.CensusDAO@491fd7dc, com.bridgelabz.indiancensusanalyser.model.CensusDAO@477f95c8, com.bridgelabz.indiancensusanalyser.model.CensusDAO@6dafc516, com.bridgelabz.indiancensusanalyser.model.CensusDAO@6b19b160, com.bridgelabz.indiancensusanalyser.model.CensusDAO@5c8f2ae8, com.bridgelabz.indiancensusanalyser.model.CensusDAO@67e52564, com.bridgelabz.indiancensusanalyser.model.CensusDAO@74f1cbfb, com.bridgelabz.indiancensusanalyser.model.CensusDAO@52c5e6b4, com.bridgelabz.indiancensusanalyser.model.CensusDAO@77384e6e, com.bridgelabz.indiancensusanalyser.model.CensusDAO@39389be8, com.bridgelabz.indiancensusanalyser.model.CensusDAO@436c2127, com.bridgelabz.indiancensusanalyser.model.CensusDAO@3e618fb8, com.bridgelabz.indiancensusanalyser.model.CensusDAO@b1ffd24, com.bridgelabz.indiancensusanalyser.model.CensusDAO@7605c074, com.bridgelabz.indiancensusanalyser.model.CensusDAO@54c2a28a, com.bridgelabz.indiancensusanalyser.model.CensusDAO@66ecfbe5, com.bridgelabz.indiancensusanalyser.model.CensusDAO@12eedcc1, com.bridgelabz.indiancensusanalyser.model.CensusDAO@4a30a888, com.bridgelabz.indiancensusanalyser.model.CensusDAO@ba785b6, com.bridgelabz.indiancensusanalyser.model.CensusDAO@a9564f4, com.bridgelabz.indiancensusanalyser.model.CensusDAO@6e79b9b3, com.bridgelabz.indiancensusanalyser.model.CensusDAO@21c2381c, com.bridgelabz.indiancensusanalyser.model.CensusDAO@167f83a7, com.bridgelabz.indiancensusanalyser.model.CensusDAO@376cf758, com.bridgelabz.indiancensusanalyser.model.CensusDAO@14fb7427, com.bridgelabz.indiancensusanalyser.model.CensusDAO@24c9bc7c, com.bridgelabz.indiancensusanalyser.model.CensusDAO@4e4171f9, com.bridgelabz.indiancensusanalyser.model.CensusDAO@1e47995e, com.bridgelabz.indiancensusanalyser.model.CensusDAO@51529cfd, com.bridgelabz.indiancensusanalyser.model.CensusDAO@3891f0f7, com.bridgelabz.indiancensusanalyser.model.CensusDAO@7d1a80a5, com.bridgelabz.indiancensusanalyser.model.CensusDAO@5f356b31, com.bridgelabz.indiancensusanalyser.model.CensusDAO@1ac5b15e, com.bridgelabz.indiancensusanalyser.model.CensusDAO@2d64fcb9, com.bridgelabz.indiancensusanalyser.model.CensusDAO@4d24e18, com.bridgelabz.indiancensusanalyser.model.CensusDAO@70cad150, com.bridgelabz.indiancensusanalyser.model.CensusDAO@4732c156]
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+Caused by: com.opencsv.exceptions.CsvDataTypeMismatchException: Conversion of 135767.46 to int failed.
+	at com.opencsv.bean.BeanFieldPrimitiveTypes.convert(BeanFieldPrimitiveTypes.java:71)
+	at com.opencsv.bean.AbstractBeanField.setFieldValue(AbstractBeanField.java:132)
+	at com.opencsv.bean.concurrent.ProcessCsvLine.processField(ProcessCsvLine.java:140)
+	at com.opencsv.bean.concurrent.ProcessCsvLine.processLine(ProcessCsvLine.java:126)
+	at com.opencsv.bean.concurrent.ProcessCsvLine.run(ProcessCsvLine.java:82)
+	... 55 more
+Caused by: org.apache.commons.beanutils.ConversionException: Error converting from 'String' to 'Integer' For input string: "135767.46"
+	at org.apache.commons.beanutils.converters.AbstractConverter.handleError(AbstractConverter.java:282)
+	at org.apache.commons.beanutils.converters.AbstractConverter.convert(AbstractConverter.java:177)
+	at org.apache.commons.beanutils.converters.ConverterFacade.convert(ConverterFacade.java:61)
+	at org.apache.commons.beanutils.ConvertUtilsBean.convert(ConvertUtilsBean.java:491)
+	at com.opencsv.bean.BeanFieldPrimitiveTypes.convert(BeanFieldPrimitiveTypes.java:63)
+	... 59 more
+Caused by: java.lang.NumberFormatException: For input string: "135767.46"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+	at java.base/java.lang.Integer.parseInt(Integer.java:658)
+	at java.base/java.lang.Integer.<init>(Integer.java:1117)
+	at org.apache.commons.beanutils.converters.NumberConverter.toNumber(NumberConverter.java:433)
+	at org.apache.commons.beanutils.converters.NumberConverter.convertToType(NumberConverter.java:271)
+	at org.apache.commons.beanutils.converters.AbstractConverter.convert(AbstractConverter.java:169)
+	... 62 more
+]]></system-err>
 </testsuite>

@@ -201,19 +201,6 @@ public class CensusAnalyserTest {
             e.printStackTrace();
         }
     }
-    //us most and least populous state
-//    @Test
-//    public void giveUsCensusData_WhenSortOnPopulation_ShouldReturnSortedResult() {
-//        try {
-//            censusAnalyser = new CensusAnalyser();
-//            censusAnalyser.loadCensusData(US_CENSUS, Us_CENSUS_CSV_FILE_PATH);
-//            String sortCensusData = censusAnalyser.getPopulationWiseSortedUsCensusData();
-//            UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-//            Assert.assertEquals(37253956, usCensusCSV[usCensusCSV.length-1].usPopulation);
-//            Assert.assertEquals(601723, usCensusCSV[0].usPopulation);
-//        } catch (CensusAnalyserException e) {
-//        }
-//    }
     //check the records of usCsv file
     @Test
     public void givenUsCensusCSVFile_ReturnsCorrectRecords() {
@@ -231,7 +218,7 @@ public class CensusAnalyserTest {
             censusAnalyser.loadCensusData(US_CENSUS, Us_CENSUS_CSV_FILE_PATH);
             String sortCensusData = censusAnalyser.stateCensusData(Comparator.comparing(CensusDAO -> CensusDAO.totalArea));
             UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-            Assert.assertEquals("1723338.01", usCensusCSV[usCensusCSV.length-1].totalArea);
+            Assert.assertEquals(1723338, usCensusCSV[usCensusCSV.length-1].totalArea);
         } catch (CensusAnalyserException e) {
         }
     }
@@ -242,7 +229,7 @@ public class CensusAnalyserTest {
             censusAnalyser.loadCensusData(US_CENSUS, Us_CENSUS_CSV_FILE_PATH);
             String sortCensusData = censusAnalyser.stateCensusData(Comparator.comparing(CensusDAO -> CensusDAO.housingUnits));
             UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-            Assert.assertEquals("13680081", usCensusCSV[usCensusCSV.length-1].housingUnits);
+            Assert.assertEquals(13680081, usCensusCSV[usCensusCSV.length-1].housingUnits);
         } catch (CensusAnalyserException e) {
             e.printStackTrace();
         }
