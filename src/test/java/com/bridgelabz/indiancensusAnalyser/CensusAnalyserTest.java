@@ -1,16 +1,12 @@
 package com.bridgelabz.indiancensusAnalyser;
 
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
-import com.bridgelabz.indiancensusanalyser.model.CensusDAO;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
-import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
 import com.bridgelabz.indiancensusanalyser.services.CensusAnalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Comparator;
 
 import static com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.Country.*;
 
@@ -235,5 +231,4 @@ public class CensusAnalyserTest {
 //        } catch (CensusAnalyserException e) {
 //        }
 //    }
-
 }

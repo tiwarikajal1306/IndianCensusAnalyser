@@ -17,8 +17,8 @@ import static com.bridgelabz.indiancensusanalyser.services.CensusLoader.censusLi
 
 public class CensusAnalyser {
 
-    //List<CensusDAO> censusList;
-   // Map<String, CensusDAO> censusMap;
+    List<CensusDAO> censusList;
+    Map<String, CensusDAO> censusMap;
     CensusLoader loadData = new CensusLoader();
 
 
@@ -26,10 +26,10 @@ public class CensusAnalyser {
         INDIA_CENSUS, INDIA_STATE_CODE, US_CENSUS
     }
 
-//    public CensusAnalyser() {
-//        this.censusMap = new HashMap<>();
-//        this.censusList = new ArrayList<>();
-//    }
+    public CensusAnalyser() {
+        this.censusMap = new HashMap<>();
+        this.censusList = new ArrayList<>();
+    }
 
     public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
         if (country.equals(Country.INDIA_CENSUS)) {
