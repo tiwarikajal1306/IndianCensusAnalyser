@@ -17,8 +17,8 @@ import static com.bridgelabz.indiancensusanalyser.services.CensusLoader.censusLi
 
 public class CensusAnalyser {
 
-    List<CensusDAO> censusList;
-    Map<String, CensusDAO> censusMap;
+    //List<CensusDAO> censusList;
+   // Map<String, CensusDAO> censusMap;
     CensusLoader loadData = new CensusLoader();
 
 
@@ -26,10 +26,10 @@ public class CensusAnalyser {
         INDIA_CENSUS, INDIA_STATE_CODE, US_CENSUS
     }
 
-    public CensusAnalyser() {
-        this.censusMap = new HashMap<>();
-        this.censusList = new ArrayList<>();
-    }
+//    public CensusAnalyser() {
+//        this.censusMap = new HashMap<>();
+//        this.censusList = new ArrayList<>();
+//    }
 
     public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
         if (country.equals(Country.INDIA_CENSUS)) {
@@ -137,5 +137,19 @@ public class CensusAnalyser {
         String sortedStateCensusJson = new Gson().toJson(censusList);
         return sortedStateCensusJson;
     }
+
+
+
+    public String stateCensusData(Comparator<CensusDAO> field) throws CensusAnalyserException {
+        System.out.println(censusList);
+        if (censusList == null || censusList.size() == 0) {
+            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
+        }
+        //Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.state);
+        this.sortCSVData(field);
+        String sortedStateCensusJson = new Gson().toJson(censusList);
+        return sortedStateCensusJson;
+    }
+
 
 }
