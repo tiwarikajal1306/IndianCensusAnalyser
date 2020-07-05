@@ -7,7 +7,7 @@ public class CensusAnalyserException extends Exception {
     }
 
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM, EMPTY_FILE
+        CENSUS_FILE_PROBLEM, EMPTY_FILE, INVALID_COUNTRY
     }
     public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type) {
