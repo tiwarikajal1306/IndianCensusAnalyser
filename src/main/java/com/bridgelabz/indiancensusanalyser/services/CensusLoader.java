@@ -46,6 +46,7 @@ public class CensusLoader {
                     break;
             }
             return censusMap.size();
+            //return censusList;
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);

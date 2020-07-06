@@ -1,7 +1,6 @@
 package com.bridgelabz.indiancensusAnalyser;
 
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
-import com.bridgelabz.indiancensusanalyser.model.CensusDAO;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
 import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
@@ -218,7 +217,7 @@ public class CensusAnalyserTest {
             censusAnalyser.loadCensusData(US_CENSUS, Us_CENSUS_CSV_FILE_PATH);
             String sortCensusData = censusAnalyser.stateCensusData(Comparator.comparing(CensusDAO -> CensusDAO.totalArea));
             UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-            Assert.assertEquals(1723338, usCensusCSV[usCensusCSV.length-1].totalArea);
+            Assert.assertEquals(1723338.01, usCensusCSV[usCensusCSV.length-1].totalArea,0.0);
         } catch (CensusAnalyserException e) {
         }
     }
@@ -229,9 +228,9 @@ public class CensusAnalyserTest {
             censusAnalyser.loadCensusData(US_CENSUS, Us_CENSUS_CSV_FILE_PATH);
             String sortCensusData = censusAnalyser.stateCensusData(Comparator.comparing(CensusDAO -> CensusDAO.housingUnits));
             UsCensusCSV[] usCensusCSV = new Gson().fromJson(sortCensusData, UsCensusCSV[].class);
-            Assert.assertEquals(13680081, usCensusCSV[usCensusCSV.length-1].housingUnits);
+            Assert.assertEquals(1.3680081E7, usCensusCSV[usCensusCSV.length-1].housingUnits,0.0);
         } catch (CensusAnalyserException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
     @Test

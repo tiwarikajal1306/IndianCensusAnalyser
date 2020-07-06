@@ -17,31 +17,23 @@ import static com.bridgelabz.indiancensusanalyser.services.CensusLoader.censusLi
 
 public class CensusAnalyser {
 
-    //List<CensusDAO> censusList;
-   // Map<String, CensusDAO> censusMap;
     CensusLoader loadData = new CensusLoader();
-
 
     public enum Country {
         INDIA_CENSUS, INDIA_STATE_CODE, US_CENSUS
     }
 
-//    public CensusAnalyser() {
-//        this.censusMap = new HashMap<>();
-//        this.censusList = new ArrayList<>();
-//    }
-
     public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
+
         if (country.equals(Country.INDIA_CENSUS)) {
             return loadData.loadCensusData(IndiaCensusCSV.class, csvFilePath);
         } else if (country.equals(Country.INDIA_STATE_CODE)) {
             return loadData.loadCensusData(IndiaStateCSV.class, csvFilePath);
         } else if (country.equals(Country.US_CENSUS)) {
-            return loadData.loadCensusData(UsCensusCSV.class, csvFilePath);
+           return loadData.loadCensusData(UsCensusCSV.class, csvFilePath);
         } else {
             throw new CensusAnalyserException("Invalid Country", CensusAnalyserException.ExceptionType.INVALID_COUNTRY);
         }
-
     }
 
     //Method for sorting
@@ -67,78 +59,6 @@ public class CensusAnalyser {
             e.printStackTrace();
         }
     }
-
-    //sort the state
-    public String getStateWiseSortedCensusData() throws CensusAnalyserException {
-        System.out.println(censusList);
-        if (censusList == null || censusList.size() == 0) {
-            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.state);
-        this.sortCSVData(censusComparator);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
-    }
-
-    public String getCodeWiseSortedStateCodeData() throws CensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.stateCode);
-        this.sortCSVData(censusComparator);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
-    }
-
-    //sort the population of indian Census data in ascending order
-    public String getPopulationWiseSortedCensusData() throws CensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.population);
-        this.sortCSVData(censusComparator);
-        Collections.reverse(censusList);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        String fileName = "./src/test/resources/UsStateCensusjson.json";
-        this.write(fileName, censusList);
-        return sortedStateCensusJson;
-    }
-
-    // sort the area of indian census data
-    public String getAreaWiseSortedCensusData() throws CensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.areaInSqKm);
-        this.sortCSVData(censusComparator);
-        Collections.reverse(censusList);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
-    }
-
-    //sort by descending the density of indian census data
-    public String getDensityWiseSortedCensusData() throws CensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
-        }
-        Comparator<CensusDAO> censusComparator = Comparator.comparing(censusDAO -> censusDAO.densityPerSqKm);
-        this.sortCSVData(censusComparator);
-        Collections.reverse(censusList);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
-    }
-
-    public String sortIndiaStateCensusData(Comparator<CensusDAO> field) throws CensusAnalyserException {
-        if (censusList == null || censusList.size() == 0) {
-            throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
-        }
-        // Comparator<CensusDAO> censusComparator = Comparator.comparing(field);
-        this.sortCSVData(field);
-        String sortedStateCensusJson = new Gson().toJson(censusList);
-        return sortedStateCensusJson;
-    }
-
-//
 
     public String stateCensusData(Comparator<CensusDAO> field) throws CensusAnalyserException {
         System.out.println(censusList);
