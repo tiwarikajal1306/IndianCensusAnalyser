@@ -47,13 +47,15 @@ public class CensusAnalyser {
         }
     }
 
-    public String stateCensusData(Comparator<CensusDAO> field) throws CensusAnalyserException {
+    public String stateCensusData(Comparator<CensusDAO> field, String jsonPath) throws CensusAnalyserException {
         System.out.println(censusList);
         if (censusList == null || censusList.size() == 0) {
             throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
         }
         //this.sortCSVData(field);
         censusList.sort(field);
+       // String fileName = "./src/test/resources/UsStateCensusjson.json";
+        this.write(jsonPath, censusList);
         String sortedStateCensusJson = new Gson().toJson(censusList);
         return sortedStateCensusJson;
     }
