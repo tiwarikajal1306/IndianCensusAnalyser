@@ -5,9 +5,8 @@ public class CensusAnalyserException extends Exception {
         super(message);
         this.type = ExceptionType.valueOf(name);
     }
-
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM, EMPTY_FILE, INVALID_COUNTRY
+        CENSUS_FILE_PROBLEM, EMPTY_FILE, INVALID_COUNTRY, INVALID_HEADER_AND_DELIMITER
     }
     public ExceptionType type;
     public CensusAnalyserException(String message, ExceptionType type) {

@@ -7,35 +7,24 @@ import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
 import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
-import static com.bridgelabz.indiancensusanalyser.services.CensusLoader.censusList;
+import static com.bridgelabz.indiancensusanalyser.services.CensusAdapter.censusList;
 
 public class CensusAnalyser {
-
-    CensusLoader loadData = new CensusLoader();
-
+   // CensusAdapter loadData = new CensusAdapter();
     public enum Country {
         INDIA_CENSUS, INDIA_STATE_CODE, US_CENSUS
     }
 
-    public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
-
-        if (country.equals(Country.INDIA_CENSUS)) {
-            return loadData.loadCensusData(IndiaCensusCSV.class, csvFilePath);
-        } else if (country.equals(Country.INDIA_STATE_CODE)) {
-            return loadData.loadCensusData(IndiaStateCSV.class, csvFilePath);
-        } else if (country.equals(Country.US_CENSUS)) {
-           return loadData.loadCensusData(UsCensusCSV.class, csvFilePath);
-        } else {
-            throw new CensusAnalyserException("Invalid Country", CensusAnalyserException.ExceptionType.INVALID_COUNTRY);
-        }
+    public Map<String, CensusDAO> loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException{
+        return new CensusAdapterFactory().getCensusData(country, csvFilePath);
     }
-
 
     // method to write into json
     public void write(String fileName, List listToWrite) {
@@ -46,18 +35,15 @@ public class CensusAnalyser {
             e.printStackTrace();
         }
     }
-
+    //method for sort
     public String stateCensusData(Comparator<CensusDAO> field, String jsonPath) throws CensusAnalyserException {
         System.out.println(censusList);
         if (censusList == null || censusList.size() == 0) {
             throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
         }
-        //this.sortCSVData(field);
         censusList.sort(field);
-       // String fileName = "./src/test/resources/UsStateCensusjson.json";
         this.write(jsonPath, censusList);
         String sortedStateCensusJson = new Gson().toJson(censusList);
         return sortedStateCensusJson;
     }
-
 }

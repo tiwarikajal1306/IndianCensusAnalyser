@@ -8,7 +8,6 @@ import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
 import com.opencsv.CSVBuilderException;
 import com.opencsv.CSVBuilderFactory;
 import com.opencsv.ICSVBuilder;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -17,11 +16,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class CensusLoader {
-    Map<String, CensusDAO> censusMap = new HashMap<>();
+public abstract class CensusAdapter {
+
+
+    public abstract Map<String, CensusDAO> loadCensusData(String... csvFilePath) throws CensusAnalyserException;
+
+
+    //Map<String, CensusDAO> censusMap = new HashMap<>();
     public static List<CensusDAO> censusList = new ArrayList<>();
-    public  <E> int loadCensusData(Class<E> CSVClass, String... csvFilePath) throws CensusAnalyserException {
-        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath[0]));) {
+
+    public <E> Map<String, CensusDAO> loadCensusData(Class<E> CSVClass, String csvFilePath) throws CensusAnalyserException{
+        Map<String, CensusDAO> censusMap = new HashMap<>();
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<E> indiaCensusCodeIterator = csvBuilder.getCSVFileIterator(reader, CSVClass);
             Iterable<E> stateCensuses = () -> indiaCensusCodeIterator;
@@ -45,16 +51,17 @@ public class CensusLoader {
                     censusList = censusMap.values().stream().collect(Collectors.toList());
                     break;
             }
-            return censusMap.size();
-            //return censusList;
+            return censusMap;
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
-        } catch (CSVBuilderException e) {
-            throw new CensusAnalyserException(e.getMessage(), e.type.name());
         } catch (RuntimeException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
+            throw new CensusAnalyserException("Invalid header or delimiter",
+                    CensusAnalyserException.ExceptionType.INVALID_HEADER_AND_DELIMITER);
         }
-        return 0;
+        catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(), e.type.name());
+        }
     }
 }
