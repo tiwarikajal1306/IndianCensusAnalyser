@@ -36,19 +36,6 @@ public class CensusAnalyser {
         }
     }
 
-    //Method for sorting
-    private void sortCSVData(Comparator<CensusDAO> csvComparator) {
-        for (int i = 0; i < censusList.size() - 1; i++) {
-            for (int j = 0; j < censusList.size() - i - 1; j++) {
-                CensusDAO census1 = censusList.get(j);
-                CensusDAO census2 = censusList.get(j + 1);
-                if (csvComparator.compare(census1, census2) > 0) {
-                    censusList.set(j, census2);
-                    censusList.set(j + 1, census1);
-                }
-            }
-        }
-    }
 
     // method to write into json
     public void write(String fileName, List listToWrite) {
@@ -65,7 +52,8 @@ public class CensusAnalyser {
         if (censusList == null || censusList.size() == 0) {
             throw new CensusAnalyserException("empty file", CensusAnalyserException.ExceptionType.EMPTY_FILE);
         }
-        this.sortCSVData(field);
+        //this.sortCSVData(field);
+        censusList.sort(field);
         String sortedStateCensusJson = new Gson().toJson(censusList);
         return sortedStateCensusJson;
     }
