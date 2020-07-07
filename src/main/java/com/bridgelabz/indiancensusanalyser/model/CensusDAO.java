@@ -1,14 +1,16 @@
 package com.bridgelabz.indiancensusanalyser.model;
 
+import com.bridgelabz.indiancensusanalyser.services.CensusAnalyser;
+
 public class CensusDAO {
     public int densityPerSqKm;
     public int areaInSqKm;
     public String state;
     public int population;
 
-    public int srNo;
+    //public int srNo;
     public String stateName;
-    public int tin;
+   // public int tin;
     public String stateCode;
 
     public double totalArea;
@@ -26,9 +28,9 @@ public class CensusDAO {
 }
 
     public CensusDAO(IndiaStateCSV indiaStateCSV) {
-        srNo = indiaStateCSV.srNo;
+       // srNo = indiaStateCSV.srNo;
         stateName = indiaStateCSV.stateName;
-        tin = indiaStateCSV.tin;
+        //tin = indiaStateCSV.tin;
         stateCode = indiaStateCSV.stateCode;
 
     }
@@ -42,4 +44,11 @@ public class CensusDAO {
         stateId = censusCSV.stateId;
     }
 
+    public Object getCensusDTOS(CensusAnalyser.Country country) {
+        if (country.equals(CensusAnalyser.Country.US_CENSUS))
+            return new UsCensusCSV(housingUnits, stateId, totalArea, waterArea, usState);
+        else if (country.equals(CensusAnalyser.Country.INDIA_CENSUS))
+            return new IndiaCensusCSV(state, areaInSqKm, (int) densityPerSqKm, (int) totalArea, (int) population);
+        return new IndiaStateCSV(stateName, stateCode);
+    }
 }

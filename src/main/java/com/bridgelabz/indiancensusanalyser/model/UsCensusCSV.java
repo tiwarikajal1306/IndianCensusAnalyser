@@ -21,4 +21,14 @@ public class UsCensusCSV {
     @CsvBindByName(column = "Water area", required = true)
     public double waterArea;
 
+    public UsCensusCSV() {
+    }
+
+    public UsCensusCSV(double housingUnits, String stateId, double totalArea, double waterArea, String usState) {
+        this.housingUnits = housingUnits;
+        this.waterArea = waterArea;
+        this.stateId = stateId;
+        this.totalArea = totalArea;
+        this.usState = usState;
+    }
 }
