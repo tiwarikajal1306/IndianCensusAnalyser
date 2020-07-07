@@ -1,7 +1,7 @@
-package com.bridgelabz.indiancensusanalyser.services;
+package com.bridgelabz.indiancensusanalyser.adapter;
 
 import com.bridgelabz.indiancensusanalyser.exception.CensusAnalyserException;
-import com.bridgelabz.indiancensusanalyser.model.CensusDAO;
+import com.bridgelabz.indiancensusanalyser.dao.CensusDAO;
 import com.bridgelabz.indiancensusanalyser.model.IndiaCensusCSV;
 import com.bridgelabz.indiancensusanalyser.model.IndiaStateCSV;
 import com.bridgelabz.indiancensusanalyser.model.UsCensusCSV;
@@ -22,7 +22,6 @@ public abstract class CensusAdapter {
     public abstract Map<String, CensusDAO> loadCensusData(String... csvFilePath) throws CensusAnalyserException;
 
 
-    //Map<String, CensusDAO> censusMap = new HashMap<>();
     public static List<CensusDAO> censusList = new ArrayList<>();
 
     public <E> Map<String, CensusDAO> loadCensusData(Class<E> CSVClass, String csvFilePath) throws CensusAnalyserException{
@@ -56,7 +55,6 @@ public abstract class CensusAdapter {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         } catch (RuntimeException e) {
-           // e.printStackTrace();
             throw new CensusAnalyserException("Invalid header or delimiter",
                     CensusAnalyserException.ExceptionType.INVALID_HEADER_AND_DELIMITER);
         }

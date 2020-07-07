@@ -8,7 +8,6 @@ import com.bridgelabz.indiancensusanalyser.services.CensusAnalyser;
 import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
-import java.util.Comparator;
 import java.util.Map;
 
 import static com.bridgelabz.indiancensusanalyser.services.CensusAnalyser.Country.*;
@@ -228,18 +227,18 @@ public class CensusAnalyserTest {
             e.printStackTrace();
         }
     }
-//    @Test
-//    public void givenUSAndIndiaCensusFile_ShouldReturn_MostPopulousState_withDensity(){
-//        try {
-//            censusAnalyser = new CensusAnalyser();
-//            censusAnalyser.loadCensusData(INDIA_CENSUS, INDIA_CENSUS_CSV_FILE_PATH);
-//            String fileName = "./src/test/resources/IndiaStateMaximumPopulationAndDensityCensusJson.json";
-//            String sortCensusData = censusAnalyser.stateCensusData(Comparator.comparing(CensusDAO -> CensusDAO.population), fileName);
-//            IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
-//            Assert.assertEquals("Uttar Pradesh", indiaCensusCSV[indiaCensusCSV.length-1].state);
-//            Assert.assertEquals(828, indiaCensusCSV[indiaCensusCSV.length-1].densityPerSqKm);
-//        } catch (CensusAnalyserException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Test
+    public void givenUSAndIndiaCensusFile_ShouldReturn_MostPopulousState_withDensity(){
+        try {
+            censusAnalyser = new CensusAnalyser(INDIA_CENSUS);
+            censusAnalyser.loadCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            String fileName = "./src/test/resources/IndiaStateMaximumPopulationAndDensityCensusJson.json";
+            String sortCensusData = censusAnalyser.stateCensusData("population", fileName);
+            IndiaCensusCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndiaCensusCSV[].class);
+            Assert.assertEquals("Uttar Pradesh", indiaCensusCSV[indiaCensusCSV.length-1].state);
+            Assert.assertEquals(828, indiaCensusCSV[indiaCensusCSV.length-1].densityPerSqKm);
+        } catch (CensusAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
 }
