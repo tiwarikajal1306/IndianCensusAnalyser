@@ -21,8 +21,9 @@ public class CensusAnalyserMockitoTest {
         CensusAnalyser censusAnalyser =  mock(CensusAnalyser.class);
         when(censusAnalyser.loadCensusData(INDIA_CENSUS_CSV_FILE_PATH)).thenReturn(censusMap);
         try {
-            Map numOfRecords = censusAnalyser.loadCensusData(INDIA_CENSUS_CSV_FILE_PATH);
-            Assert.assertEquals(29, numOfRecords.size());
+            //int numOfRecords = censusAnalyser.loadCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+            int numOfRecords=censusMap.size();
+            Assert.assertEquals(29, numOfRecords);
         } catch (Exception e) {
             e.printStackTrace();
         }

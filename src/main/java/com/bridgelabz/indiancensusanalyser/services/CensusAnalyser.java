@@ -72,6 +72,5 @@ public class CensusAnalyser {
                 throw new IllegalStateException("Unexpected value: " + parameter);
         }
     }
-
     }
 

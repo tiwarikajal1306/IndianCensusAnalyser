@@ -21,7 +21,7 @@ public abstract class CensusAdapter {
     public static List<CensusDAO> censusList = new ArrayList<>();
 
     public <E> Map<String, CensusDAO> loadCensusData(Class<E> CSVClass, String csvFilePath) throws CensusAnalyserException{
-        Map<String, CensusDAO> censusMap = new HashMap<>();
+        Map<String, CensusDAO>  censusMap = new HashMap<>();
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<E> indiaCensusCodeIterator = csvBuilder.getCSVFileIterator(reader, CSVClass);
