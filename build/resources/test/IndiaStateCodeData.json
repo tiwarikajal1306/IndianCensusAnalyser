@@ -1,0 +1,150 @@
+[
+  {
+    "stateName": "Andhra Pradesh New",
+    "stateCode": "AD"
+  },
+  {
+    "stateName": "Andaman and Nicobar Islands",
+    "stateCode": "AN"
+  },
+  {
+    "stateName": "Andhra Pradesh",
+    "stateCode": "AP"
+  },
+  {
+    "stateName": "Arunachal Pradesh",
+    "stateCode": "AR"
+  },
+  {
+    "stateName": "Assam",
+    "stateCode": "AS"
+  },
+  {
+    "stateName": "Bihar",
+    "stateCode": "BH"
+  },
+  {
+    "stateName": "Chandigarh",
+    "stateCode": "CH"
+  },
+  {
+    "stateName": "Chattisgarh",
+    "stateCode": "CT"
+  },
+  {
+    "stateName": "Daman and Diu",
+    "stateCode": "DD"
+  },
+  {
+    "stateName": "Delhi",
+    "stateCode": "DL"
+  },
+  {
+    "stateName": "Dadra and Nagar Haveli",
+    "stateCode": "DN"
+  },
+  {
+    "stateName": "Goa",
+    "stateCode": "GA"
+  },
+  {
+    "stateName": "Gujarat",
+    "stateCode": "GJ"
+  },
+  {
+    "stateName": "Himachal Pradesh",
+    "stateCode": "HP"
+  },
+  {
+    "stateName": "Haryana",
+    "stateCode": "HR"
+  },
+  {
+    "stateName": "Jharkhand",
+    "stateCode": "JH"
+  },
+  {
+    "stateName": "Jammu and Kashmir",
+    "stateCode": "JK"
+  },
+  {
+    "stateName": "Karnataka",
+    "stateCode": "KA"
+  },
+  {
+    "stateName": "Kerala",
+    "stateCode": "KL"
+  },
+  {
+    "stateName": "Lakshadweep Islands",
+    "stateCode": "LD"
+  },
+  {
+    "stateName": "Meghalaya",
+    "stateCode": "ME"
+  },
+  {
+    "stateName": "Maharashtra",
+    "stateCode": "MH"
+  },
+  {
+    "stateName": "Mizoram",
+    "stateCode": "MI"
+  },
+  {
+    "stateName": "Manipur",
+    "stateCode": "MN"
+  },
+  {
+    "stateName": "Madhya Pradesh",
+    "stateCode": "MP"
+  },
+  {
+    "stateName": "Nagaland",
+    "stateCode": "NL"
+  },
+  {
+    "stateName": "Odisha",
+    "stateCode": "OR"
+  },
+  {
+    "stateName": "Punjab",
+    "stateCode": "PB"
+  },
+  {
+    "stateName": "Pondicherry",
+    "stateCode": "PY"
+  },
+  {
+    "stateName": "Rajasthan",
+    "stateCode": "RJ"
+  },
+  {
+    "stateName": "Sikkim",
+    "stateCode": "SK"
+  },
+  {
+    "stateName": "Tamil Nadu",
+    "stateCode": "TN"
+  },
+  {
+    "stateName": "Tripura",
+    "stateCode": "TR"
+  },
+  {
+    "stateName": "Telangana",
+    "stateCode": "TS"
+  },
+  {
+    "stateName": "Uttar Pradesh",
+    "stateCode": "UP"
+  },
+  {
+    "stateName": "Uttarakhand",
+    "stateCode": "UT"
+  },
+  {
+    "stateName": "West Bengal",
+    "stateCode": "WB"
+  }
+]

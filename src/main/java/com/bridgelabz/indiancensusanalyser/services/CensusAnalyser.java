@@ -25,7 +25,9 @@ public class CensusAnalyser {
     }
 
     public Map<String, CensusDAO> loadCensusData(String... csvFilePath) throws CensusAnalyserException {
-        return new CensusAdapterFactory().getCensusData(country, csvFilePath);
+        CensusAdapterFactory censusAdapterFactory = new CensusAdapterFactory();
+        return censusAdapterFactory.getCensusData(country, csvFilePath);
+       // return new CensusAdapterFactory().getCensusData(country, csvFilePath);
     }
 
     // method to write into json

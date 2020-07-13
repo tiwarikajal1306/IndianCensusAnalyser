@@ -47,6 +47,14 @@ public class CensusDAO {
         stateId = censusCSV.stateId;
     }
 
+    public CensusDAO(String state, int population, int areaInSqKm, int densityPerSqKm) {
+        this.state = state;
+        this.population = population;
+        this.areaInSqKm = areaInSqKm;
+        this.densityPerSqKm = densityPerSqKm;
+    }
+
+
     public Object getCensusDTOS(CensusAnalyser.Country country) {
         if (country.equals(CensusAnalyser.Country.US_CENSUS))
             return new UsCensusCSV(housingUnits, stateId, totalArea, waterArea, usState);
